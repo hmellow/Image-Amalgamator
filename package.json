@@ -1,0 +1,27 @@
+{
+  "name": "image-amalgamator",
+  "version": "1.0.0",
+  "description": "A package that can combine several images in series",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PiPinecone/Image-Amalgamator.git"
+  },
+  "keywords": [
+    "images",
+    "merge",
+    "jimp"
+  ],
+  "author": "PiPinecone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PiPinecone/Image-Amalgamator/issues"
+  },
+  "homepage": "https://github.com/PiPinecone/Image-Amalgamator#readme",
+  "dependencies": {
+    "jimp": "^0.16.1"
+  }
+}
