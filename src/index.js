@@ -2,7 +2,7 @@ const Jimp = require('jimp');
 
 let margin = 5;
 
-async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
+export default async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
     let finalWidth = 0;
     let widthArr = [];
     let finalHeight = 0;
@@ -41,5 +41,3 @@ async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
         }
     });
 }
-
-export default mergeImages;
