@@ -1,9 +1,8 @@
 const Jimp = require('jimp');
 
-let images = ["Testing-images/E.png", "Testing-images/L.png"];
 let margin = 5;
 
-async function imgMerge(imgs) {
+async function mergeImages(imgs) {
     let finalWidth = 0;
     let widthArr = [];
     let finalHeight = 0;
@@ -33,4 +32,4 @@ async function imgMerge(imgs) {
     });
 }
 
-imgMerge(images);
+export default mergeImages;
