@@ -26,12 +26,6 @@ async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
         for(let i = 0; i < imgs.length; i++) {
             Jimp.read(imgs[i], (err, fore) => {
                 back.blit(fore, widthArr[i] + margin, 0);
-
-                // Scale on the final iteration if enough arguments exist
-                if((i == imgs.length - 1) && (arguments.length == 4)) {
-                    back.scaleToFit(scaleWidth, scaleHeight);
-                }
-
                 back.write(writePath);
             });
         }
