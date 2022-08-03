@@ -2,10 +2,10 @@ const Jimp = require('jimp');
 
 let margin = 5;
 
-export default async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
+async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
     let finalWidth = 0;
-    let widthArr = [];
     let finalHeight = 0;
+    let widthArr = [0];
 
     // Calculate dimensions of final image and collect individual widths
     for(let i = 0; i < imgs.length; i++) {
@@ -13,7 +13,7 @@ export default async function mergeImages(imgs, writePath, scaleWidth, scaleHeig
 
         let width = image.bitmap.width;
         finalWidth += width;
-        widthArr.push(width);
+        widthArr.push(finalWidth);
 
         let height = image.bitmap.height;
         if(height > finalHeight) {
@@ -21,15 +21,11 @@ export default async function mergeImages(imgs, writePath, scaleWidth, scaleHeig
         }
     }
 
-    let working;
     // Create a transparent image and paste images on top of it
     new Jimp(finalWidth + margin, finalHeight + margin, (err, back) => {
-        let currentR = 0;
-
         for(let i = 0; i < imgs.length; i++) {
             Jimp.read(imgs[i], (err, fore) => {
-                back.blit(fore, currentR + margin, 0);
-                currentR += fore.bitmap.width;
+                back.blit(fore, widthArr[i] + margin, 0);
 
                 // Scale on the final iteration if enough arguments exist
                 if((i == imgs.length - 1) && (arguments.length == 4)) {
@@ -37,7 +33,11 @@ export default async function mergeImages(imgs, writePath, scaleWidth, scaleHeig
                 }
 
                 back.write(writePath);
-            })
+            });
         }
     });
+}
+
+module.exports = {
+    mergeImages
 }
