@@ -22,14 +22,18 @@ async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
     }
 
     // Create a transparent image and paste images on top of it
-    new Jimp(finalWidth + margin, finalHeight + margin, (err, back) => {
-        for(let i = 0; i < imgs.length; i++) {
-            Jimp.read(imgs[i], (err, fore) => {
-                back.blit(fore, widthArr[i] + margin, 0);
-                back.write(writePath);
-            });
-        }
-    });
+    let back = new Jimp(finalWidth + margin, finalHeight + margin);
+    for(let i = 0; i < imgs.length; i++) {
+        back.blit(await Jimp.read(imgs[i]), widthArr[i] + margin, 0);
+    }
+
+    // Scale image if specified
+    if(arguments.length == 4) {
+        back.scaleToFit(scaleWidth, scaleHeight)
+            .write(writePath);
+    } else {
+        back.write(writePath);
+    }
 }
 
 module.exports = {
