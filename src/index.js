@@ -29,10 +29,10 @@ async function mergeImages(imgs, writePath, scaleWidth, scaleHeight) {
 
     // Scale image if specified
     if(arguments.length == 4) {
-        back.scaleToFit(scaleWidth, scaleHeight)
-            .write(writePath);
+       await back.scaleToFit(scaleWidth, scaleHeight)
+            .writeAsync(writePath);
     } else {
-        back.write(writePath);
+       await back.writeAsync(writePath);
     }
 }
 

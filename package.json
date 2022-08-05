@@ -1,6 +1,6 @@
 {
   "name": "image-amalgamator",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "A package that can combine several images in series",
   "main": "./src/index.js",
   "scripts": {
@@ -9,9 +9,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/PiPinecone/Image-Amalgamator.git"
-  },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
   },
   "keywords": [
     "images",
